@@ -12,8 +12,6 @@ Source:		%{name}-%{version}.tar.gz
 #BuildRequires:	/bin/scsh
 Buildroot:	/tmp/%{name}-%{version}-root
 
-%define	_prefix	/usr
-
 %description
 
 %description -l pl
@@ -32,14 +30,14 @@ Group(pl): 	Programowanie/Biblioteki
 %setup -q
 
 %build
-./configure --prefix=%{_prefix} \
+%configure \
 	--enable-shared \
 	--enable-static \
 	--disable-fast-install 
 
 make RPM_OPT_FLAGS="$RPM_OPT_FLAGS" SCSH=/bin/sh
 
-gzip -9 ChangeLog
+gzip -9nf ChangeLog
 
 %install
 make prefix=$RPM_BUILD_ROOT%{_prefix} install
@@ -47,27 +45,14 @@ make prefix=$RPM_BUILD_ROOT%{_prefix} install
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files devel
-%defattr(644,root,root,755)
-%attr(644,root,root) %{_libdir}/%{name}*a
-%attr(644,root,root) %{_includedir}/libol/*
-%attr(755,root,root) %{_bindir}/libol-config
-%attr(644,root,root) %{_bindir}/make_class
-
 %files
 %defattr(644, root, root, 755)
 %doc ChangeLog.gz
-%attr(644,root,root) %{_libdir}/%{name}.so*
+%attr(755,root,root) %{_libdir}/%{name}.so*
 
-%changelog
-* Tue Jul 20 1999 Wojciech "Sas" Ciêciwa <cieciwa@alpha.zarz.agh.edu.pl>
-  [0.2.0-1]
-- update to last version.
-
-* Tue May  4 1999 Wojciech "Sas" Ciêciwa <cieciwa@alpha.zarz.agh.edu.pl>
-  [0.1.7-2]
-- changing installation procedure,
-- fixing requires problem.
-
-* Wed Apr 28 1999 Wojciech "Sas" Ciêciwa <cieciwa@alpha.zarz.agh.edu.pl>
-- build RPM.
+%files devel
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/libol-config
+%attr(755,root,root) %{_bindir}/make_class
+%{_libdir}/%{name}*a
+%{_includedir}/libol/*
