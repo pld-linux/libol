@@ -2,12 +2,13 @@ Summary:	libol
 Summary(pl):	Biblioteka libol
 Name:		libol
 Version:	0.2.24
-Release:	1
+Release:	2
 License:	GPL
 Group:		Libraries
-Source0:	http://www.balabit.hu//downloads/syslog-ng/libol/0.2/%{name}-%{version}.tar.gz
+Source0:	http://www.balabit.hu//downloads/syslog-ng/libol/0.3/%{name}-%{version}.tar.gz
 Patch0:		%{name}-autoconf.patch
 Patch1:		%{name}-gethostbyname_is_in_libc_aka_no_libnsl.patch
+Patch2:		%{name}-AC_LIBOBJ.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
@@ -51,8 +52,10 @@ Biblioteka statyczna libolo.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
+rm -f missing
 %{__libtoolize}
 aclocal
 %{__autoconf}
@@ -66,8 +69,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} DESTDIR=$RPM_BUILD_ROOT install
 
-gzip -9nf ChangeLog
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -80,7 +81,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc *.gz
+%doc ChangeLog
 %attr(755,root,root) %{_bindir}/libol-config
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
