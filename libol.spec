@@ -22,7 +22,7 @@ garbage collector.
 Libol jest niewielk± bibliotek± u¿ywan± przez syslog-ng.
 
 %package devel
-Summary:	Header files for libol 
+Summary:	Header files for libol
 Summary(pl):	Pliki nag³ówkowe do libol
 Group:		Development/Libraries
 Requires:	%{name} = %{version}
@@ -30,7 +30,7 @@ Requires:	%{name} = %{version}
 %description devel
 Header files for libol.
 
-%description -l pl devel
+%description devel -l pl
 Pliki nag³ówkowe do libol.
 
 %package static
@@ -42,7 +42,7 @@ Requires:	%{name}-devel = %{version}
 %description static
 Static libol library.
 
-%description -l pl static
+%description static -l pl
 Biblioteka statyczna libolo.
 
 %prep
@@ -55,9 +55,9 @@ libtoolize --copy --force
 aclocal
 autoconf
 automake -a -c
-%configure 
+%configure
 
-%{__make} 
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
