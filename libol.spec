@@ -11,7 +11,7 @@ Source:		http://www.balabit.hu//downloads/syslog-ng/libol/0.2/%{name}-%{version}
 Patch0:		libol-autoconf.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
-Buildroot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 Libol is a small library used by syslog-ng, and provides nonblocking-io,
