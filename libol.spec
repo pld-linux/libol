@@ -1,11 +1,12 @@
-Summary:	libol
+Summary:	libol library
 Summary(pl):	Biblioteka libol
 Name:		libol
-Version:	0.2.24
-Release:	2
+Version:	0.3.10
+Release:	1
 License:	GPL
 Group:		Libraries
-Source0:	http://www.balabit.hu//downloads/syslog-ng/libol/0.3/%{name}-%{version}.tar.gz
+Source0:	http://www.balabit.hu/downloads/syslog-ng/libol/0.3/%{name}-%{version}.tar.gz
+# Source0-md5:	46c09c1aea3c9ead9acff4ab002069a7
 Patch0:		%{name}-autoconf.patch
 Patch1:		%{name}-gethostbyname_is_in_libc_aka_no_libnsl.patch
 Patch2:		%{name}-AC_LIBOBJ.patch
@@ -15,12 +16,12 @@ BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Libol is a small library used by syslog-ng, and provides
+libol is a small library used by syslog-ng, and provides
 nonblocking-io, length encoded string functions and a mark & sweep
 garbage collector.
 
 %description -l pl
-Libol jest niewielk± bibliotek± u¿ywan± przez syslog-ng, a daj±c±
+libol jest niewielk± bibliotek± u¿ywan± przez syslog-ng, a daj±c±
 obs³ugê nieblokuj±cego wej¶cia/wyj¶cia, funkcje do obs³ugi ci±gów
 znaków z zapisywan± d³ugo¶ci± oraz od¶miecacz.
 
@@ -46,7 +47,7 @@ Requires:	%{name}-devel = %{version}
 Static libol library.
 
 %description static -l pl
-Biblioteka statyczna libolo.
+Biblioteka statyczna libol.
 
 %prep
 %setup -q
@@ -57,7 +58,7 @@ Biblioteka statyczna libolo.
 %build
 rm -f missing
 %{__libtoolize}
-aclocal
+%{__aclocal}
 %{__autoconf}
 %{__automake}
 %configure
@@ -84,7 +85,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc ChangeLog
 %attr(755,root,root) %{_bindir}/libol-config
 %attr(755,root,root) %{_libdir}/lib*.so
-%attr(755,root,root) %{_libdir}/lib*.la
+%{_libdir}/lib*.la
 %{_includedir}/libol
 
 %files static
