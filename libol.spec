@@ -7,15 +7,16 @@ License:	GPL
 Group:		Libraries
 Group(fr):	Librairies
 Group(pl):	Biblioteki
-Source:		http://www.balabit.hu//downloads/syslog-ng/libol/0.2/%{name}-%{version}.tar.gz
+Source0:	http://www.balabit.hu//downloads/syslog-ng/libol/0.2/%{name}-%{version}.tar.gz
 Patch0:		libol-autoconf.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Libol is a small library used by syslog-ng, and provides nonblocking-io,
-length encoded string functions and a mark & sweep garbage collector.
+Libol is a small library used by syslog-ng, and provides
+nonblocking-io, length encoded string functions and a mark & sweep
+garbage collector.
 
 %description -l pl
 Libol jest niewielk± bibliotek± u¿ywan± przez syslog-ng.
@@ -89,4 +90,5 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/libol
 
 %files static
-%attr(644,root,root) %{_libdir}/lib*.a
+%defattr(644,root,root,755)
+%{_libdir}/lib*.a
