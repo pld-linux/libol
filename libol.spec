@@ -1,16 +1,14 @@
 Summary:	libol library
 Summary(pl):	Biblioteka libol
 Name:		libol
-Version:	0.3.13
+Version:	0.3.14
 Release:	1
 License:	GPL
 Group:		Libraries
 Source0:	http://www.balabit.hu/downloads/syslog-ng/libol/0.3/%{name}-%{version}.tar.gz
-# Source0-md5:	b66e21769e21ac9b953cbafe517630fd
+# Source0-md5:	ae30409d846cfed73dd764623fb6dc3f
 Patch0:		%{name}-autoconf.patch
-Patch1:		%{name}-gethostbyname_is_in_libc_aka_no_libnsl.patch
-Patch2:		%{name}-AC_LIBOBJ.patch
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
 BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -29,7 +27,7 @@ znaków z zapisywan± d³ugo¶ci± oraz od¶miecacz.
 Summary:	Header files for libol
 Summary(pl):	Pliki nag³ówkowe do libol
 Group:		Development/Libraries
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files for libol.
@@ -41,7 +39,7 @@ Pliki nag³ówkowe do libol.
 Summary:	Static libol library
 Summary(pl):	Biblioteka statyczna libol
 Group:		Development/Libraries
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static libol library.
@@ -52,8 +50,6 @@ Biblioteka statyczna libol.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
 
 %build
 %{__libtoolize}
