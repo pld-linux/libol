@@ -1,7 +1,7 @@
 Summary:	libol
 Summary(pl):	Biblioteka libol
 Name:		libol
-Version:	0.3.5
+Version:	0.3.9
 Release:	1
 License:	GPL
 Group:		Libraries
