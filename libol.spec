@@ -1,7 +1,7 @@
 Summary:	libol
 Summary(pl):	libol
 Name:		libol
-Version:	0.2.21
+Version:	0.2.22
 Release:	1
 License:	GPL
 Group:		Libraries
@@ -13,6 +13,7 @@ Patch0:		%{name}-autoconf.patch
 Patch1:		%{name}-gethostbyname_is_in_libc_aka_no_libnsl.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -59,9 +60,10 @@ Biblioteka statyczna libolo.
 %patch1 -p1
 
 %build
+libtoolize --copy --force
 aclocal
 autoconf
-automake --foreign --add-missing
+automake -a -c
 %configure 
 
 %{__make} 
