@@ -1,7 +1,7 @@
 Summary:	libol
 Summary(pl):	libol
 Name:		libol
-Version:	0.2.20
+Version:	0.2.21
 Release:	1
 License:	GPL
 Group:		Libraries
