@@ -1,14 +1,12 @@
 Summary:	libol
 Summary(pl):	libol
 Name:		libol
-Version:	0.2.0
-Release:	2
+Version:	0.2.5
+Release:	1
 Copyright:	GPL
 Group:		Libraries
 Group(pl):	Biblioteki
-#http:		www.balabit.hu
-#path:		/products/syslog-ng/source
-Source:		%{name}-%{version}.tar.gz
+Source:		http://www.balabit.hu/products/syslog-ng/source/%{name}-%{version}.tar.gz
 #BuildRequires:	/bin/scsh
 Buildroot:	/tmp/%{name}-%{version}-root
 
@@ -30,17 +28,14 @@ Group(pl): 	Programowanie/Biblioteki
 %setup -q
 
 %build
-%configure \
-	--enable-shared \
-	--enable-static \
-	--disable-fast-install 
+%configure 
 
-make RPM_OPT_FLAGS="$RPM_OPT_FLAGS" SCSH=/bin/sh
+make 
 
 gzip -9nf ChangeLog
 
 %install
-make prefix=$RPM_BUILD_ROOT%{_prefix} install
+make DESTDIR=$RPM_BUILD_ROOT install
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -48,11 +43,12 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644, root, root, 755)
 %doc ChangeLog.gz
-%attr(755,root,root) %{_libdir}/%{name}.so*
+%attr(755,root,root) %{_libdir}/%{name}.so.*.*.*
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/libol-config
-%attr(755,root,root) %{_bindir}/make_class
-%{_libdir}/%{name}*a
-%{_includedir}/libol/*
+#%attr(755,root,root) %{_bindir}/make_class
+%{_libdir}/%{name}.a
+%{_libdir}/%{name}.la
+%{_includedir}/libol
