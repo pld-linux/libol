@@ -55,8 +55,8 @@ Biblioteka statyczna libolo.
 %build
 libtoolize --copy --force
 aclocal
-autoconf
-automake -a -c -f
+%{__autoconf}
+%{__automake}
 %configure
 
 %{__make}
