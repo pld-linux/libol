@@ -1,13 +1,14 @@
 Summary:	libol
-Summary(pl):	libol
+Summary(pl):	Biblioteka libol
 Name:		libol
-Version:	0.3.2
-Release:	0.1
+Version:	0.3.3
+Release:	1
 License:	GPL
 Group:		Libraries
 Source0:	http://www.balabit.hu//downloads/syslog-ng/libol/0.3/%{name}-%{version}.tar.gz
 Patch0:		%{name}-autoconf.patch
 Patch1:		%{name}-gethostbyname_is_in_libc_aka_no_libnsl.patch
+Patch2:		%{name}-AC_LIBOBJ.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
@@ -19,7 +20,9 @@ nonblocking-io, length encoded string functions and a mark & sweep
 garbage collector.
 
 %description -l pl
-Libol jest niewielk± bibliotek± u¿ywan± przez syslog-ng.
+Libol jest niewielk± bibliotek± u¿ywan± przez syslog-ng, a daj±c±
+obs³ugê nieblokuj±cego wej¶cia/wyj¶cia, funkcje do obs³ugi ci±gów
+znaków z zapisywan± d³ugo¶ci± oraz od¶miecacz.
 
 %package devel
 Summary:	Header files for libol
@@ -49,12 +52,14 @@ Biblioteka statyczna libolo.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
-libtoolize --copy --force
+rm -f missing
+%{__libtoolize}
 aclocal
-autoconf
-automake -a -c -f
+%{__autoconf}
+%{__automake}
 %configure
 
 %{__make}
@@ -63,8 +68,6 @@ automake -a -c -f
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} DESTDIR=$RPM_BUILD_ROOT install
-
-gzip -9nf ChangeLog
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -78,7 +81,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc *.gz
+%doc ChangeLog
 %attr(755,root,root) %{_bindir}/libol-config
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
