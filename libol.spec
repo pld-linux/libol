@@ -73,4 +73,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/libol
 
 %files static
-%attr(644,root,root) %{_libdir}/lub*.a
+%attr(644,root,root) %{_libdir}/lib*.a
