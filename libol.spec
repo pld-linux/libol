@@ -1,11 +1,11 @@
 Summary:	libol
 Summary(pl):	Biblioteka libol
 Name:		libol
-Version:	0.2.24
-Release:	2
+Version:	0.3.9
+Release:	1
 License:	GPL
 Group:		Libraries
-Source0:	http://www.balabit.hu//downloads/syslog-ng/libol/0.2/%{name}-%{version}.tar.gz
+Source0:	http://www.balabit.hu//downloads/syslog-ng/libol/0.3/%{name}-%{version}.tar.gz
 Patch0:		%{name}-autoconf.patch
 Patch1:		%{name}-gethostbyname_is_in_libc_aka_no_libnsl.patch
 Patch2:		%{name}-AC_LIBOBJ.patch
