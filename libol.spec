@@ -2,7 +2,7 @@ Summary:	libol library
 Summary(pl):	Biblioteka libol
 Name:		libol
 Version:	0.3.14
-Release:	1
+Release:	2
 License:	GPL
 Group:		Libraries
 Source0:	http://www.balabit.hu/downloads/syslog-ng/libol/0.3/%{name}-%{version}.tar.gz
@@ -65,6 +65,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+sed -i -e 's:#!.*scsh\(.*\):#!/bin/scsh \1:g' $RPM_BUILD_ROOT%{_bindir}/make_class
 
 %clean
 rm -rf $RPM_BUILD_ROOT
