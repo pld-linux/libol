@@ -1,5 +1,5 @@
 Summary:	libol
-Summary(pl):	libol
+Summary(pl):	Biblioteka libol
 Name:		libol
 Version:	0.2.24
 Release:	1
@@ -19,7 +19,9 @@ nonblocking-io, length encoded string functions and a mark & sweep
 garbage collector.
 
 %description -l pl
-Libol jest niewielk± bibliotek± u¿ywan± przez syslog-ng.
+Libol jest niewielk± bibliotek± u¿ywan± przez syslog-ng, a daj±c±
+obs³ugê nieblokuj±cego wej¶cia/wyj¶cia, funkcje do obs³ugi ci±gów
+znaków z zapisywan± d³ugo¶ci± oraz od¶miecacz.
 
 %package devel
 Summary:	Header files for libol
