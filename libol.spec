@@ -5,7 +5,7 @@ Version:	0.3.10
 Release:	1
 License:	GPL
 Group:		Libraries
-Source0:	http://www.balabit.hu//downloads/syslog-ng/libol/0.3/%{name}-%{version}.tar.gz
+Source0:	http://www.balabit.hu/downloads/syslog-ng/libol/0.3/%{name}-%{version}.tar.gz
 # Source0-md5:	46c09c1aea3c9ead9acff4ab002069a7
 Patch0:		%{name}-autoconf.patch
 Patch1:		%{name}-gethostbyname_is_in_libc_aka_no_libnsl.patch
