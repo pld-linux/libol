@@ -57,7 +57,8 @@ Biblioteka statyczna libol.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure
+%configure \
+	SCSH=/bin/scsh
 %{__make}
 
 %install
@@ -65,8 +66,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
-
-sed -i -e 's:#!.*scsh\(.*\):#!/bin/scsh \1:g' $RPM_BUILD_ROOT%{_bindir}/make_class
 
 %clean
 rm -rf $RPM_BUILD_ROOT
