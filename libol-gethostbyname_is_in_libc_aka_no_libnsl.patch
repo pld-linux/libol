@@ -1,0 +1,13 @@
+diff -Nru libol-0.2.18/configure.in libol-0.2.18.new/configure.in
+--- libol-0.2.18/configure.in	Tue Aug 22 00:29:50 2000
++++ libol-0.2.18.new/configure.in	Tue Aug 22 00:30:33 2000
+@@ -92,7 +92,8 @@
+ dnl Checks for library functions.
+ AC_FUNC_ALLOCA
+ AC_CHECK_LIB(xnet, inet_addr)
+-AC_CHECK_LIB(nsl, gethostbyname)
++AC_CHECK_FUNC(gethostbyname, ,
++	AC_CHECK_LIB(nsl, gethostbyname, LIBS="$LIBS -lnsl",) ) 
+ AC_CHECK_LIB(socket, setsockopt)
+ AC_CHECK_FUNCS(select strerror syslog)
+ AC_CHECK_FUNCS(poll,,[LIBOBJS="jpoll.lo $LIBOBJS"])
