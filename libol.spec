@@ -1,10 +1,11 @@
 Summary:	libol
 Summary(pl):	libol
 Name:		libol
-Version:	0.2.18
-Release:	2
+Version:	0.2.20
+Release:	1
 License:	GPL
 Group:		Libraries
+Group(de):	Libraries
 Group(fr):	Librairies
 Group(pl):	Biblioteki
 Source0:	http://www.balabit.hu//downloads/syslog-ng/libol/0.2/%{name}-%{version}.tar.gz
@@ -26,6 +27,7 @@ Libol jest niewielk± bibliotek± u¿ywan± przez syslog-ng.
 Summary:	Header files for libol 
 Summary(pl):	Pliki nag³ówkowe do libol
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
@@ -40,6 +42,7 @@ Pliki nag³ówkowe do libol.
 Summary:	Static libol library
 Summary(pl):	Biblioteka statyczna libol
 Group:		Development/Libraries
+Group(de):	Entwicklung/Libraries
 Group(fr):	Development/Librairies
 Group(pl):	Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
@@ -67,8 +70,6 @@ automake --foreign --add-missing
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} DESTDIR=$RPM_BUILD_ROOT install
-
-strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.*
 
 gzip -9nf ChangeLog
 
