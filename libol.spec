@@ -1,12 +1,14 @@
 Summary:	libol
 Summary(pl):	libol
 Name:		libol
-Version:	0.2.7
+Version:	0.2.9
 Release:	1
-Copyright:	GPL
+License:	GPL
 Group:		Libraries
+Group(fr):	Librairies
 Group(pl):	Biblioteki
-Source:		http://www.balabit.hu/products/syslog-ng/source/%{name}-%{version}.tar.gz
+Source:		http://www.balabit.hu//downloads/syslog-ng/source/%{name}-%{version}.tar.gz
+Patch0:		libol-autoconf.patch
 Buildroot:	/tmp/%{name}-%{version}-root
 
 %description
@@ -14,13 +16,14 @@ Libol is a small library used by syslog-ng, and provides nonblocking-io,
 length encoded string functions and a mark & sweep garbage collector.
 
 %description -l pl
-Libol jest niewielk± bibliotek± 
+Libol jest niewielk± bibliotek± u¿ywan± przez syslog-ng.
 
 %package devel
-Summary: 	Header files for libol 
+Summary:	Header files for libol 
 Summary(pl):	Pliki nag³ówkowe do libol
-Group: 		Development/Libraries
-Group(pl): 	Programowanie/Biblioteki
+Group:		Development/Libraries
+Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
 Requires:	%{name} = %{version}
 
 %description devel
@@ -30,10 +33,11 @@ Header files for libol.
 Pliki nag³ówkowe do libol.
 
 %package static
-Summary: 	Static libol library
+Summary:	Static libol library
 Summary(pl):	Biblioteka statyczna libol
-Group: 		Development/Libraries
-Group(pl): 	Programowanie/Biblioteki
+Group:		Development/Libraries
+Group(fr):	Development/Librairies
+Group(pl):	Programowanie/Biblioteki
 Requires:	%{name}-devel = %{version}
 
 %description static
@@ -46,14 +50,19 @@ Biblioteka statyczna libolo.
 %setup -q
 
 %build
+LDFLAGS="-s"; export LDFLAGS
 %configure 
 
 make 
 
-gzip -9nf ChangeLog
-
 %install
+rm -rf $RPM_BUILD_ROOT
+
 make DESTDIR=$RPM_BUILD_ROOT install
+
+strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.*
+
+gzip -9nf ChangeLog
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -62,14 +71,15 @@ rm -rf $RPM_BUILD_ROOT
 %postun -p /sbin/ldconfig
 
 %files
-%defattr(644, root, root, 755)
-%doc ChangeLog.gz
+%defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 
 %files devel
 %defattr(644,root,root,755)
+%doc *.gz
 %attr(755,root,root) %{_bindir}/libol-config
-%{_libdir}/lib*.la
+%attr(755,root,root) %{_libdir}/lib*.so
+%attr(755,root,root) %{_libdir}/lib*.la
 %{_includedir}/libol
 
 %files static
