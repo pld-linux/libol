@@ -2,13 +2,14 @@ Summary:	libol
 Summary(pl):	libol
 Name:		libol
 Version:	0.2.18
-Release:	1
+Release:	2
 License:	GPL
 Group:		Libraries
 Group(fr):	Librairies
 Group(pl):	Biblioteki
 Source0:	http://www.balabit.hu//downloads/syslog-ng/libol/0.2/%{name}-%{version}.tar.gz
-Patch0:		libol-autoconf.patch
+Patch0:		%{name}-autoconf.patch
+Patch1:		%{name}-gethostbyname_is_in_libc_aka_no_libnsl.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -52,9 +53,9 @@ Biblioteka statyczna libolo.
 %prep
 %setup -q
 %patch0 -p1
+%patch1 -p1
 
 %build
-LDFLAGS="-s"; export LDFLAGS
 aclocal
 autoconf
 automake --foreign --add-missing
