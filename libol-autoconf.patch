@@ -1,11 +1,11 @@
-diff -Nru libol-0.2.9/configure.in libol-0.2.9.new/configure.in
---- libol-0.2.9/configure.in	Wed Dec 15 10:54:01 1999
-+++ libol-0.2.9.new/configure.in	Sun Feb 20 09:14:04 2000
+diff -Nru libol-0.3.4/configure.in libol-0.3.4.new/configure.in
+--- libol-0.3.4.orig/configure.in	Wed Dec 15 10:54:01 1999
++++ libol-0.3.4/configure.in	Sun Feb 20 09:14:04 2000
 @@ -80,12 +80,6 @@
  dnl LIBOBJS="jpoll.lo $LIBOBJS"
  AC_SUBST(LIBOBJS)
  
--if test $with_debug = "yes"; then
+-if test $enable_debug = "yes"; then
 -	CFLAGS="-Wall -g"
 -else
 -	CFLAGS="-Wall -O2"
