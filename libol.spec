@@ -2,7 +2,7 @@ Summary:	libol library
 Summary(pl):	Biblioteka libol
 Name:		libol
 Version:	0.3.14
-Release:	2
+Release:	3
 License:	GPL
 Group:		Libraries
 Source0:	http://www.balabit.hu/downloads/syslog-ng/libol/0.3/%{name}-%{version}.tar.gz
@@ -81,7 +81,9 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/libol-config
+%ifnarch amd64 alpha sparc64 ppc64
 %attr(755,root,root) %{_bindir}/make_class
+%endif
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
 %{_includedir}/libol
