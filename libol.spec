@@ -1,4 +1,4 @@
-Summary:	libol
+Summary:	libol library
 Summary(pl):	Biblioteka libol
 Name:		libol
 Version:	0.3.10
@@ -16,12 +16,12 @@ BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Libol is a small library used by syslog-ng, and provides
+libol is a small library used by syslog-ng, and provides
 nonblocking-io, length encoded string functions and a mark & sweep
 garbage collector.
 
 %description -l pl
-Libol jest niewielk± bibliotek± u¿ywan± przez syslog-ng, a daj±c±
+libol jest niewielk± bibliotek± u¿ywan± przez syslog-ng, a daj±c±
 obs³ugê nieblokuj±cego wej¶cia/wyj¶cia, funkcje do obs³ugi ci±gów
 znaków z zapisywan± d³ugo¶ci± oraz od¶miecacz.
 
@@ -47,7 +47,7 @@ Requires:	%{name}-devel = %{version}
 Static libol library.
 
 %description static -l pl
-Biblioteka statyczna libolo.
+Biblioteka statyczna libol.
 
 %prep
 %setup -q
