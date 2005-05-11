@@ -11,6 +11,7 @@ Patch0:		%{name}-autoconf.patch
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
 BuildRequires:	libtool
+BuildRequires:	rpmbuild(macros) >= 1.213
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -101,7 +102,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %{_libdir}/libol.a
 
-%ifnarch amd64 alpha sparc64 ppc64
+%ifnarch %{x8664} alpha ia64 s390x sparc64 ppc64
 %files make_class
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/make_class
