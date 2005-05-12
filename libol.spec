@@ -1,12 +1,12 @@
 Summary:	libol library
 Summary(pl):	Biblioteka libol
 Name:		libol
-Version:	0.3.15
-Release:	3
+Version:	0.3.16
+Release:	1
 License:	GPL
 Group:		Libraries
 Source0:	http://www.balabit.hu/downloads/syslog-ng/libol/0.3/%{name}-%{version}.tar.gz
-# Source0-md5:	1c8d6a9c72a9200738a04d68e5a7b439
+# Source0-md5:	1f29be3f4bcddb5b2f3d965e78f04006
 Patch0:		%{name}-autoconf.patch
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
