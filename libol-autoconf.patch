@@ -1,14 +1,25 @@
-diff -Nru libol-0.2.9/configure.in libol-0.2.9.new/configure.in
---- libol-0.2.9/configure.in	Wed Dec 15 10:54:01 1999
-+++ libol-0.2.9.new/configure.in	Sun Feb 20 09:14:04 2000
-@@ -80,12 +80,6 @@
- dnl LIBOBJS="jpoll.lo $LIBOBJS"
- AC_SUBST(LIBOBJS)
+--- libol-0.3.14/configure.in.orig	2004-08-05 13:13:44.000000000 +0200
++++ libol-0.3.14/configure.in	2004-08-06 21:01:16.000000000 +0200
+@@ -94,21 +94,15 @@
  
--if test $with_debug = "yes"; then
+ dnl Checks for library functions.
+ AC_FUNC_ALLOCA
+-AC_CHECK_LIB(xnet, inet_addr)
+-AC_CHECK_LIB(nsl, gethostbyname)
+-AC_CHECK_LIB(socket, setsockopt)
++AC_SEARCH_LIBS(inet_addr, xnet)
++AC_SEARCH_LIBS(gethostbyname, nsl)
++AC_SEARCH_LIBS(setsockopt, socket)
+ AC_CHECK_FUNCS(select strerror syslog poll)
+ 
+ if test "x$ac_cv_func_poll" != "xyes"; then
+ 	AC_LIBOBJ(jpoll)
+ fi
+ 
+-if test $enable_debug = "yes"; then
 -	CFLAGS="-Wall -g"
 -else
--	CFLAGS="-Wall -O2"
+-	CFLAGS="$CFLAGS -Wall -O2"
 -fi
 -
  MAKE_CLASS="$srcdir/utils/make_class"
