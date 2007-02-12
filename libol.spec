@@ -1,5 +1,5 @@
 Summary:	libol library
-Summary(pl):	Biblioteka libol
+Summary(pl.UTF-8):   Biblioteka libol
 Name:		libol
 Version:	0.3.18
 Release:	1
@@ -19,46 +19,46 @@ libol is a small library used by syslog-ng, and provides
 nonblocking-io, length encoded string functions and a mark & sweep
 garbage collector.
 
-%description -l pl
-libol jest niewielk± bibliotek± u¿ywan± przez syslog-ng, a daj±c±
-obs³ugê nieblokuj±cego wej¶cia/wyj¶cia, funkcje do obs³ugi ci±gów
-znaków z zapisywan± d³ugo¶ci± oraz od¶miecacz.
+%description -l pl.UTF-8
+libol jest niewielkÄ… bibliotekÄ… uÅ¼ywanÄ… przez syslog-ng, a dajÄ…cÄ…
+obsÅ‚ugÄ™ nieblokujÄ…cego wejÅ›cia/wyjÅ›cia, funkcje do obsÅ‚ugi ciÄ…gÃ³w
+znakÃ³w z zapisywanÄ… dÅ‚ugoÅ›ciÄ… oraz odÅ›miecacz.
 
 %package devel
 Summary:	Header files for libol
-Summary(pl):	Pliki nag³ówkowe do libol
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe do libol
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description devel
 Header files for libol.
 
-%description devel -l pl
-Pliki nag³ówkowe do libol.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe do libol.
 
 %package static
 Summary:	Static libol library
-Summary(pl):	Biblioteka statyczna libol
+Summary(pl.UTF-8):   Biblioteka statyczna libol
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static libol library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Biblioteka statyczna libol.
 
 %package make_class
 Summary:	libol make_class utility
-Summary(pl):	Narzêdzie make_class dla biblioteki libol
+Summary(pl.UTF-8):   NarzÄ™dzie make_class dla biblioteki libol
 Group:		Development/Tools
 Requires:	%{name}-devel = %{version}-%{release}
 
 %description make_class
 libol make_class development utility.
 
-%description make_class -l pl
-Narzêdzie programistyczne make_class dla biblioteki libol.
+%description make_class -l pl.UTF-8
+NarzÄ™dzie programistyczne make_class dla biblioteki libol.
 
 %prep
 %setup -q
