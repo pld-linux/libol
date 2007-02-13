@@ -1,5 +1,5 @@
 Summary:	libol library
-Summary(pl.UTF-8):   Biblioteka libol
+Summary(pl.UTF-8):	Biblioteka libol
 Name:		libol
 Version:	0.3.18
 Release:	1
@@ -26,7 +26,7 @@ znaków z zapisywaną długością oraz odśmiecacz.
 
 %package devel
 Summary:	Header files for libol
-Summary(pl.UTF-8):   Pliki nagłówkowe do libol
+Summary(pl.UTF-8):	Pliki nagłówkowe do libol
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
@@ -38,7 +38,7 @@ Pliki nagłówkowe do libol.
 
 %package static
 Summary:	Static libol library
-Summary(pl.UTF-8):   Biblioteka statyczna libol
+Summary(pl.UTF-8):	Biblioteka statyczna libol
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{version}-%{release}
 
@@ -50,7 +50,7 @@ Biblioteka statyczna libol.
 
 %package make_class
 Summary:	libol make_class utility
-Summary(pl.UTF-8):   Narzędzie make_class dla biblioteki libol
+Summary(pl.UTF-8):	Narzędzie make_class dla biblioteki libol
 Group:		Development/Tools
 Requires:	%{name}-devel = %{version}-%{release}
 
