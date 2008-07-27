@@ -2,7 +2,7 @@ Summary:	libol library
 Summary(pl.UTF-8):	Biblioteka libol
 Name:		libol
 Version:	0.3.18
-Release:	1
+Release:	2
 License:	GPL
 Group:		Libraries
 Source0:	http://www.balabit.hu/downloads/syslog-ng/libol/0.3/%{name}-%{version}.tar.gz
