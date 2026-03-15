@@ -1,0 +1,35 @@
+--- libol-0.3.18/src/io.c.orig	2026-03-15 12:45:26.578327487 +0100
++++ libol-0.3.18/src/io.c	2026-03-15 12:45:50.189133304 +0100
+@@ -378,9 +378,10 @@
+     }
+ }
+ 
+-static int do_recv(struct abstract_read **r, UINT32 length, UINT8 *buffer, abstract_addr *addr, socklen_t *addrlen)
++static int do_recv(struct abstract_read **r, UINT32 length, UINT8 *buffer, abstract_addr *addr, size_t *addrlen)
+ {
+ 	CAST(fd_read, closure, *r);
++	socklen_t slen;
+ 
+ 	if (!length) {
+ 		werror("io.c: do_recv(): Zero length read was requested.\n");
+@@ -394,7 +395,9 @@
+ 		
+ 		((struct sockaddr *) addr)->sa_family = 0;
+ 		
+-		res = recvfrom(closure->fd, buffer, length, 0, (struct sockaddr *) addr, (socklen_t *) addrlen);
++		slen = (socklen_t) *addrlen;
++		res = recvfrom(closure->fd, buffer, length, 0, (struct sockaddr *) addr, &slen);
++		*addrlen = (size_t) slen;
+ 
+ 		if (*addrlen == 2 || (*addrlen >= 2 && ((struct sockaddr *) addr)->sa_family == 0)) {
+ 			/* HACK: this is a workaround of a Linux 2.2 & 2.4 bug,
+@@ -1410,7 +1413,8 @@
+ 	}
+ 
+ 	fchmod(newfd, statbuf.st_mode);
+-	fchown(newfd, statbuf.st_uid, statbuf.st_gid);
++	if (fchown(newfd, statbuf.st_uid, statbuf.st_gid) == -1)
++		werror("reopen_fd: fchown failed: %z\n", strerror(errno));
+ 	dup2(newfd, oldfd);
+ 	close(newfd);
+ 

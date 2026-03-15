@@ -2,12 +2,13 @@ Summary:	libol library
 Summary(pl.UTF-8):	Biblioteka libol
 Name:		libol
 Version:	0.3.18
-Release:	2
+Release:	3
 License:	GPL
 Group:		Libraries
 Source0:	http://www.balabit.hu/downloads/syslog-ng/libol/0.3/%{name}-%{version}.tar.gz
 # Source0-md5:	cbadf4b7ea276dfa85acc38a1cc5ff17
 Patch0:		%{name}-autoconf.patch
+Patch1:		%{name}-io-fix-incompatible-pointer-types.patch
 BuildRequires:	autoconf >= 2.53
 BuildRequires:	automake
 BuildRequires:	libtool
@@ -63,6 +64,8 @@ Narzędzie programistyczne make_class dla biblioteki libol.
 %prep
 %setup -q
 %patch -P0 -p1
+%patch -P1 -p1
+touch src/*.x
 
 %build
 %{__libtoolize}
